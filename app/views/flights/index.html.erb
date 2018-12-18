@@ -1,0 +1,22 @@
+<h1>Flights</h1>
+<hr>
+<%= simple_form_for( @flight, url:flights_path, method: 'get') do |f| %>
+  <%=f.input :departure_airport, collection: @airports %>
+  <%=f.input :arival_airport, collection: @airports %>
+  <%=f.input :start, as: :date, start_year: Date.today.year%>
+  <%= f.button :submit, 'Search' %>
+<% end %>
+
+<hr>
+
+
+
+<% if @flights.any?%>
+  <section class="my-5">
+    <ol class="list-group">
+      <% @flights.each do |flight| %>
+        <li class="list-group-item"><%= flight.departure_airport.name %> (<strong><%= flight.departure_airport.code %></strong>) <%= link_to  "Book", "" , class: "btn btn-outline-primary float-right"%></p>
+      <% end %>
+    </ol>
+  </section>
+<% end %>
