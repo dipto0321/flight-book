@@ -1,0 +1,27 @@
+<%= simple_form_for('', url:new_booking_path, method: 'get') do |f| %>
+      <table class="table text-center">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Departure</th>
+            <th scope="col">Arival</th>
+            <th scope="col">Date and Time</th>
+            <th scope="col">Duration</th>
+            <th scope="col">Select Flight</th>
+          </tr>
+        </thead>
+        
+        <tbody>
+          <% @flights.each do |flight| %>
+            <tr>
+              <td><%=flight.departure_airport.code%></td>
+              <td><%=flight.arival_airport.code%></td>
+              <td><%=flight.start%></td>
+              <td><%=duration(flight.duration)%></td>
+              <td><%=f.input_field :flight_id, type:"radio", value:flight.id %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%=f.input_field :num_tickets, as:"hidden", value:params[:search][:num_tickets]%>
+      <%= f.button :submit, "Flight Book", class: "btn-info btn-block"%>
+    <% end %>

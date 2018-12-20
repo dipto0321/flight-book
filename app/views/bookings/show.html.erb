@@ -1,0 +1,15 @@
+<h1 class="display-1">Booked info</h1>
+<hr>
+<div class="card">
+  <div class="card-body">
+    <%= render  "flight_info" %>
+    <ol class="list-group my-3">
+      <% @booking.passengers.each do |passenger|%>
+        <li class="list-group-item">
+          <%=passenger.name %>
+        </li>
+      <% end %>
+    </ol>
+    <%= link_to  "Edit", edit_booking_path(@booking), class: "btn btn-outline-warning btn-block" %>
+  </div>
+</div>

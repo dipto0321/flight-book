@@ -1,0 +1,19 @@
+<table class="table text-center">
+  <thead class="text-white">
+    <tr class="bg-info">
+      <th scope="col">Flight ID</th>
+      <th scope="col">Departure Airport Name (code)</th>
+      <th scope="col">Arival Airport Name (code)</th>
+      <th scope="col">Departure Date and Time</th>
+      <th scope="col">Duration</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row"><%= @flight.id %></th>
+      <td><%= "#{@flight.departure_airport.name} (#{@flight.departure_airport.code}) " %></td>
+      <td><%= "#{@flight.arival_airport.name} (#{@flight.arival_airport.code}) " %></td>
+      <td><%= @flight.start%></td>
+      <td><%= duration(@flight.duration)%></td>
+  </tbody>
+</table>

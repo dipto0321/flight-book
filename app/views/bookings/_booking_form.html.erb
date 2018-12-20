@@ -1,0 +1,11 @@
+<%=simple_form_for(@booking) do |f|%>
+  <%=f.input_field :flight_id, as:"hidden", value:params[:flight_id]%>
+  <% @passengers_num.times do |i| %>
+    <%=f.simple_fields_for :passengers do |passenger| %>
+      <h5>Passsenger <%= i+1 %> info</h5>
+      <hr>
+      <%= render  "passenger", f: passenger %>
+    <% end %>
+  <% end %>
+  <%= f.button :submit, class: "btn-success"%>
+<% end %>

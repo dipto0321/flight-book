@@ -1,0 +1,9 @@
+<%=simple_form_for(@booking) do |f|%>
+  <%=f.input_field :flight_id, as:"hidden", value:@booking.flight_id%>
+  <h5>Passsenger's info</h5>
+  <hr>
+  <%=f.simple_fields_for :passengers do |passenger| %>
+    <%= render  "passenger", f: passenger %>
+  <% end %>
+  <%= f.button :submit, class: "btn-success"%>
+<% end %>
