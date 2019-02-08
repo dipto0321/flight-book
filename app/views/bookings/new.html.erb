@@ -1,5 +1,7 @@
 <h1 class="display-1 text-center">Flight Book</h1>
 <hr>
+<% message = @flight.nil? ? " No flight data found!" : "How many ticket you need? No data found!" %>
+<% unless @passengers_num.nil? || @flight.nil?  %>
 <section class="card">
   <div class="card-body">
     <%= render  "flight_info" %>
@@ -10,3 +12,8 @@
     <%= render  "booking_form" %>
   </div>
 </section>
+<% else %>
+  <div class="alert alert-danger" role="alert">
+    <%= message %>
+  </div>
+<% end %>
